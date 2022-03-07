@@ -123,11 +123,11 @@ console.log(memoClosureTimesTen(2));
 // ----------------------------------------------------------------------------
 
 const times = (...args) => {
-	let total = 1;
-	for (let i = 0; i < args.length; i++) {
-		total *= args[i];
-	}
-	return total;
+  let total = 1;
+  for (let i = 0; i < args.length; i++) {
+    total *= args[i];
+  }
+  return total;
 };
 
 // Task 4: Make your memo function generic and accept the times10 function as a callback rather than defining the n * 10 logic inside the if/else or pulling it in from the global scope.
@@ -187,37 +187,37 @@ const result = joinElements(['s', 'cr', 't cod', ' :) :)'], 'e');
 */
 
 const memoize = (cb) => {
-	const cache = {};
+  const cache = {};
 
-	return (n) => {
-		if (!cache[n]) {
-			console.log('caching value and returning result');
-			const result = cb(n);
-			cache[n] = result;
-			console.log(cache);
-			return result;
-		} else {
-			console.log('returning cached value');
-			return cache[n];
-		}
-	};
+  return (n) => {
+    if (!cache[n]) {
+      console.log('caching value and returning result');
+      const result = cb(n);
+      cache[n] = result;
+      console.log(cache);
+      return result;
+    } else {
+      console.log('returning cached value');
+      return cache[n];
+    }
+  };
 };
 
 const calcFactorial = memoize((n) => {
-	if (n === 1) return 1;
-	else {
-		return n * calcFactorial(n - 1);
-	}
+  if (n === 1) return 1;
+  else {
+    return n * calcFactorial(n - 1);
+  }
 });
 
 calcFactorial(10);
 
 const measurePerformance = () => {
-	const t1 = performance.now();
-	const factorialResult = calcFactorial(4);
-	const t2 = performance.now();
-	console.log(factorialResult);
-	console.log('performance: ', (t2 - t1) * 1000);
+  const t1 = performance.now();
+  const factorialResult = calcFactorial(4);
+  const t2 = performance.now();
+  console.log(factorialResult);
+  console.log('performance: ', (t2 - t1) * 1000);
 };
 
 measurePerformance();

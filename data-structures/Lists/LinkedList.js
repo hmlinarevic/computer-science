@@ -24,64 +24,64 @@
 */
 
 class LinkedList {
-	constructor() {
-		this.head = null;
-		this.tail = null;
-		this.length = 0;
-	}
-	push(value) {
-		const node = new Node(value);
-		if (!this.head) this.head = node;
-		else this.tail.next = node;
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+  push(value) {
+    const node = new Node(value);
+    if (!this.head) this.head = node;
+    else this.tail.next = node;
 
-		this.tail = node;
-		this.length++;
-	}
-	pop() {
-		return this.delete(this.length - 1);
-	}
-	_find(index) {
-		if (index >= this.length) return 0;
+    this.tail = node;
+    this.length++;
+  }
+  pop() {
+    return this.delete(this.length - 1);
+  }
+  _find(index) {
+    if (index >= this.length) return 0;
 
-		let current = this.head;
-		for (let i = 0; i < index; i++) {
-			current = current.next;
-		}
-		return current;
-	}
-	get(index) {
-		const node = this._find(index);
-		if (!node) return undefined;
-		return node.value;
-	}
+    let current = this.head;
+    for (let i = 0; i < index; i++) {
+      current = current.next;
+    }
+    return current;
+  }
+  get(index) {
+    const node = this._find(index);
+    if (!node) return undefined;
+    return node.value;
+  }
 
-	delete(index) {
-		let current;
+  delete(index) {
+    let current;
 
-		if (index === 0) {
-			this.head = this.head.next;
-		} else {
-			const pre = this._find(index - 1);
-			current = pre.next;
+    if (index === 0) {
+      this.head = this.head.next;
+    } else {
+      const pre = this._find(index - 1);
+      current = pre.next;
 
-			if (current.next) {
-				pre.next = current.next;
-			} else {
-				delete pre.next;
-				this.tail = pre;
-			}
-		}
+      if (current.next) {
+        pre.next = current.next;
+      } else {
+        delete pre.next;
+        this.tail = pre;
+      }
+    }
 
-		this.length--;
-		return current.value;
-	}
+    this.length--;
+    return current.value;
+  }
 }
 
 class Node {
-	constructor(value) {
-		this.value = value;
-		this.next;
-	}
+  constructor(value) {
+    this.value = value;
+    this.next;
+  }
 }
 
 const myLinkedList = new LinkedList();
